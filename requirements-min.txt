@@ -1,0 +1,35 @@
+# ============================================================
+#  精简依赖集：不安装 IsaacLab，只跑 EC66 / 甄锅 路线
+# ============================================================
+#
+#  依据：在 ec66_rl_starter 的源码与脚本里搜索 `isaaclab` 为 0 命中，
+#  这些代码只 import newton / warp / rsl_rl。IsaacLab 在本项目中只承担
+#  "启动外壳"以及 Gate 1 的 Cartpole 内置任务，不参与 EC66/甄锅主链路。
+#
+#  本文件覆盖
+#    play_pot / play_pot_motion / play_tool_particles / play_tool_pour
+#    pot_scene / pot_motion / tool_particles / tool_pour / smoke_test
+#    train_reach / evaluate_policy / play_policy / play_random_policy
+#  本文件不覆盖
+#    Isaac Lab 内置任务（Isaac-Cartpole-Direct-v0 等，即 Gate 1 的复现）
+#
+#  用法（两步；torch 必须先单独用 CUDA 索引装，见下）
+#    1) uv pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128
+#    2) uv pip install -r requirements-min.txt
+#
+#  为什么 torch 要单独一步：Windows 上从 PyPI 装到的 torch 是 CPU 版，
+#  必须显式指定 https://download.pytorch.org/whl/cu128。
+#
+#  版本与 requirements-lock.txt 的基线一致。
+# ============================================================
+
+# 会带入 warp-lang / mujoco / mujoco-warp / newton-actuators /
+# pyglet / imgui-bundle / trimesh / GitPython / cbor2 / pillow
+newton[examples]==1.2.1
+
+numpy==2.5.3
+scipy==1.18.1
+rsl-rl-lib==5.0.1
+
+# 可选：train_reach.py 导出 ONNX 策略时才需要
+onnx==1.23.0rc1

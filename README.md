@@ -54,6 +54,29 @@ warp-lang 1.13.0 / mujoco-warp 3.8.1 / rsl-rl-lib 5.0.1）。
 
 ## 从零复现
 
+### 最快方式：一条命令
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\setup_env.ps1
+```
+
+脚本用 [uv](https://docs.astral.sh/uv/) 创建 Python 3.12 环境并装齐依赖，自动建好
+`warp_tmp/`、`warp_cache/`，最后跑一次 import 自检并把下一步命令打印出来。
+
+**默认不安装 IsaacLab**：`src/` 下没有任何 `import isaaclab`，本项目代码只依赖
+`newton` / `warp` / `rsl_rl`，IsaacLab 只是文档里的启动外壳，以及 Gate 1 那个
+Cartpole 内置任务的载体。跳过它可以省掉 187 MB 克隆和一整轮 `isaaclab.bat -i`。
+确实需要 Isaac Lab 内置任务时加 `-Full`：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\setup_env.ps1 -Full
+```
+
+> 脚本里的输出信息刻意只用 ASCII：Windows PowerShell 5.1 会把无 BOM 的 `.ps1`
+> 按 ANSI 解析，中文字符串会显示成乱码。
+
+下面是等价的**手工步骤**，脚本出问题时用来对照排查。
+
 ### 1. 拿到仓库
 
 如果本仓库是 **Private**，需要先让仓库所有者把你加为协作者
@@ -68,9 +91,9 @@ cd ec66-pot-leveling-rl
 
 克隆目录名随意，仓库内部的 `ec66_rl_starter/`、`ec66_sand/`、`assets/` 相对结构由 Git 保证。
 
-### 2. 补齐 IsaacLab（固定到同一版本）
+### 2.（可选）补齐 IsaacLab
 
-本机基线是 **IsaacLab 3.0.0 @ `28a37cecdd433c22d9eabd6a5954add9f13a8951`**，不要直接装最新版：
+只在需要 Isaac Lab 内置任务时才做。基线是 **IsaacLab 3.0.0 @ `28a37cecdd433c22d9eabd6a5954add9f13a8951`**，不要直接装最新版：
 
 ```powershell
 git clone https://github.com/isaac-sim/IsaacLab.git
@@ -103,7 +126,8 @@ python -m pip install -r requirements-lock.txt
 ### 4. 自检
 
 ```powershell
-python -c "import torch,newton,rsl_rl,isaaclab; print('CUDA:', torch.cuda.is_available()); print('Torch:', torch.__version__); print('Newton:', newton.__version__)"
+# 精简路径下没有 isaaclab，如果装了 -Full 可以再把它加回 import 列表
+python -c "import torch,newton,rsl_rl; print('CUDA:', torch.cuda.is_available()); print('Torch:', torch.__version__); print('Newton:', newton.__version__)"
 
 cd ec66_rl_starter
 python scripts\check_setup.py
@@ -126,6 +150,32 @@ Windows 用户目录含中文字符时，Warp 首次编译 CUDA 内核会因 NVR
 `src/ec66_rl/newton_native/runtime_env.py` 会在导入 Newton/Warp 前把 `TEMP`、`TMP`、`WARP_CACHE_PATH`
 重定向到仓库根下的 `warp_tmp/`、`warp_cache/`，所以只要**克隆位置本身不含中文**就能规避。
 如果系统管理员用户名是中文，靠 `AppData\Local\Temp` 的默认路径仍会出问题——这也是上面三行环境变量的由来。
+
+### 为什么不用容器（Docker）
+
+评估过，在这个项目上容器**不会更快**，反而更慢，原因是：
+
+1. **GL 可视化在容器里最麻烦**。`--viewer gl` 依赖 pyglet + OpenGL，Windows 上要经
+   WSL2 + WSLg 转发；NVIDIA 驱动下的 GL 常常起不来。容器里基本只能跑 `--viewer null`
+   的无窗口验收，交互式看料面形态还是得在宿主机上做。
+2. **IsaacLab 官方的 `docker/` 没有覆盖 Newton 后端**。翻过它的 `Dockerfile.base` /
+   `docker-compose.yaml`，全文 0 处提到 `newton`，那套镜像是围绕 Isaac Sim + PhysX/ovphysx 的。
+   要用就得自己从 `nvidia/cuda:*-devel` 起（NVRTC 需要 devel 镜像）、装 Python 3.12、
+   装全部依赖、再自己处理挂载与显卡透传，构建一次约 15–20 GB。
+3. **它省不掉真正的成本**。5.5 GB 里大头是 torch 的 CUDA 运行时库，镜像里一样要装；
+   而原机没有装 Docker，对方还得先装 Docker Desktop + WSL2，本身就是半小时起步。
+4. **硬件门槛不变**。容器不改变"必须有 NVIDIA GPU 且驱动够新"这件事。
+   本机基线是 RTX 4060 Laptop + 驱动 581.80；对方显存太小或没有 N 卡，容器也救不了。
+
+**真正省时间的两个点**（已体现在 `setup_env.ps1` 里）：
+
+- 用 **uv** 代替 pip，依赖解析与下载快一个数量级；原环境本来就是 uv 建的。
+- **跳过 IsaacLab**：`src/` 下没有任何 `import isaaclab`，省掉 187 MB 克隆和一整轮
+  `isaaclab.bat -i`。这是整套流程里最大的一块时间。
+
+如果对方在一台**Linux 服务器**上、只需要无窗口训练（不需要 GL 回放），那么
+容器是合理的，此时可以从 `nvidia/cuda:12.8.1-devel-ubuntu22.04` 起，在里面照
+`setup_env.ps1` 的同一套依赖装一遍即可——但那是另一个场景，不是"更快的复现"。
 
 ## 环境准备
 
