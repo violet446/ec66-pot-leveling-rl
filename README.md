@@ -47,7 +47,85 @@
 | `downloads/` | 约 2.7 GB | PyTorch 等离线安装包 |
 | `warp_cache/`、`warp_tmp/` | — | Warp/NVRTC 运行期缓存，首次运行自动重建 |
 
-额外依赖：`scipy==1.18.1`（用于网格法线计算），见 [`ec66_rl_starter/requirements-assets.txt`](ec66_rl_starter/requirements-assets.txt)。
+依赖版本基线：完整快照见 [`requirements-lock.txt`](requirements-lock.txt)
+（Python 3.12.11 / torch 2.10.0+cu128 / IsaacLab 3.0.0 @28a37cecd / Newton 1.2.1 /
+warp-lang 1.13.0 / mujoco-warp 3.8.1 / rsl-rl-lib 5.0.1）。
+另有 `scipy==1.18.1`（用于网格法线计算），记录在 [`ec66_rl_starter/requirements-assets.txt`](ec66_rl_starter/requirements-assets.txt)。
+
+## 从零复现
+
+### 1. 拿到仓库
+
+如果本仓库是 **Private**，需要先让仓库所有者把你加为协作者
+（`Settings` → `Collaborators` → `Add people`），接受邀请后再克隆。
+Public 仓库可跳过此步。
+
+```powershell
+cd D:\work                       # 建议放在纯 ASCII 路径下，见文末说明
+git clone https://github.com/violet446/ec66-pot-leveling-rl.git
+cd ec66-pot-leveling-rl
+```
+
+克隆目录名随意，仓库内部的 `ec66_rl_starter/`、`ec66_sand/`、`assets/` 相对结构由 Git 保证。
+
+### 2. 补齐 IsaacLab（固定到同一版本）
+
+本机基线是 **IsaacLab 3.0.0 @ `28a37cecdd433c22d9eabd6a5954add9f13a8951`**，不要直接装最新版：
+
+```powershell
+git clone https://github.com/isaac-sim/IsaacLab.git
+cd IsaacLab
+git checkout 28a37cecdd433c22d9eabd6a5954add9f13a8951
+cd ..
+```
+
+### 3. 建虚拟环境并安装依赖
+
+基线用 **uv 0.12.14** 创建 Python 3.12.11 环境；用官方 venv 也可以：
+
+```powershell
+uv venv --python 3.12 env_isaaclab
+# 没有 uv 就用：py -3.12 -m venv env_isaaclab
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\env_isaaclab\Scripts\Activate.ps1
+
+# Windows 上必须带 --index-url，否则从 PyPI 装到的是 CPU 版 torch
+python -m pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128
+
+cd IsaacLab
+.\isaaclab.bat -i
+cd ..
+
+python -m pip install -r requirements-lock.txt
+```
+
+### 4. 自检
+
+```powershell
+python -c "import torch,newton,rsl_rl,isaaclab; print('CUDA:', torch.cuda.is_available()); print('Torch:', torch.__version__); print('Newton:', newton.__version__)"
+
+cd ec66_rl_starter
+python scripts\check_setup.py
+python -m unittest discover -s tests -v
+```
+
+### 5. 查看是否真正跑通
+
+```powershell
+$env:PYTHONPATH = "$PWD\src"
+& '..\env_isaaclab\Scripts\python.exe' -m ec66_rl.newton_native.play_pot --viewer gl --device cuda:0
+```
+
+能弹出 GL 窗口、看到两个球落入甄锅即环境就绪。
+
+### 关于路径里的中文
+
+Windows 用户目录含中文字符时，Warp 首次编译 CUDA 内核会因 NVRTC 无法处理非 ASCII 路径而失败
+（`invalid PCH directory` / `CUDA kernel build failed with error code 6`）。
+`src/ec66_rl/newton_native/runtime_env.py` 会在导入 Newton/Warp 前把 `TEMP`、`TMP`、`WARP_CACHE_PATH`
+重定向到仓库根下的 `warp_tmp/`、`warp_cache/`，所以只要**克隆位置本身不含中文**就能规避。
+如果系统管理员用户名是中文，靠 `AppData\Local\Temp` 的默认路径仍会出问题——这也是上面三行环境变量的由来。
 
 ## 环境准备
 
