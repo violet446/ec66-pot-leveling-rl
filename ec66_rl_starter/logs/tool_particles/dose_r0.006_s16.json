@@ -1,0 +1,23 @@
+{
+  "mode": "dose",
+  "solver": "Newton XPBD coarse beads; NOT calibrated sand/MPM",
+  "particle_count": 1326,
+  "radius_m": 0.006,
+  "assumed_packing_fraction": 0.6,
+  "nominal_bulk_equivalent_liters": 1.999560892156832,
+  "retained_count": 1326,
+  "not_retained_count": 0,
+  "retained_fraction": 1.0,
+  "retained_bulk_equivalent_liters": 1.999560892156832,
+  "below_surface_suspect_count": 0,
+  "below_surface_note": "May include edge escape followed by travel underneath; not proof of seam tunneling.",
+  "settled": false,
+  "tail_max_speed_m_s": 0.556689441204071,
+  "sim_seconds": 3.9999999999999907,
+  "substeps": 16,
+  "iterations": 8,
+  "peak_sampled_contacts": 865,
+  "diagnostic_retention_pass": false,
+  "capacity_2l_physically_validated": false,
+  "limitations": "Static blade only, same provisional orientation as robot demo. No arm reaction, no calibrated material, no actual volume measurement."
+}

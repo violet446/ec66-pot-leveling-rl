@@ -1,0 +1,8 @@
+{
+  "patch_count": 135,
+  "open_side_probes": 135,
+  "free_probes": 135,
+  "center_probe_free": true,
+  "particle_leak_tested": false,
+  "capacity_2l_validated": false
+}

@@ -1,0 +1,12 @@
+{
+  "outer_diameter_m": 2.0,
+  "wall_thickness_m": 0.03,
+  "height_m": 0.6,
+  "bottom_thickness_m": 0.04,
+  "center_xy_m": [1.35, 0.122],
+  "floor_z_m": -0.6,
+  "wall_segments": 64,
+  "scoop_volume_liters": 2.0,
+  "initial_fill_fraction": 0.5,
+  "note": "Only outer diameter is confirmed. All other dimensions, placement and dose are demo assumptions. Material is scooped from inside and returned to the same pot."
+}

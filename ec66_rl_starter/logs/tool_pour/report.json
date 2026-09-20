@@ -1,0 +1,31 @@
+{
+  "task": "prescribed tool carry and pour; NOT EC66 policy",
+  "sim_seconds": 36.99999999999918,
+  "particle_count": 1326,
+  "nominal_bulk_equivalent_liters": 1.999560892156832,
+  "stages": {
+    "loaded": 1319,
+    "carried_before_tip": 1318
+  },
+  "carry_retention_fraction": 0.9992418498862775,
+  "preload_not_retained_count": 7,
+  "loading_tail_max_speed_m_s": 0.010093966498970985,
+  "loaded_particles_finally_in_target": 1319,
+  "target_landed_count": 1325,
+  "tray_outside_target_count": 1,
+  "unlanded_or_off_tray_count": 0,
+  "target_centroid_xy_m": [
+    0.4209035038948059,
+    -0.0017881379462778568
+  ],
+  "target_landed_equivalent_liters": 1.998052927683109,
+  "settled": true,
+  "tail_max_speed_m_s": 0.041390564292669296,
+  "heightmap_observed_coverage": 0.26785714285714285,
+  "flatness_reward": null,
+  "heightmap_note": "Unobserved cells remain NaN; sparse landing footprint is not a complete pot surface.",
+  "substeps": 32,
+  "soft_contact_relaxation": 0.1,
+  "diagnostic_pass": true,
+  "limitations": "One-way kinematic blade, no arm or reaction loads; empty tray, no scooping from pot, no PPO; assumed packing 0.6 and uncalibrated material."
+}

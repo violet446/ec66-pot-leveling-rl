@@ -1,0 +1,52 @@
+# ============================================================
+#  可以上传的（保持在版本库内）
+#    ec66_rl_starter/            主项目（代码 + 文档 + 少量证据图，约 2 MB）
+#    ec66_sand/                  旧沙土工程 + assets/ec66_simplified.urdf
+#    assets/ec66_description.urdf
+#    assets/铁锹4y向上.STL
+#    assets/ec66/*.STL
+#
+#  注意：仓库根必须是 C:\newton 这一层。代码用
+#  PROJECT_ROOT.parent / "ec66_sand" 和 / "assets" 相对定位，
+#  只上传 ec66_rl_starter 会让同学那边所有 URDF 加载直接 FileNotFoundError。
+#
+#  另：本项目 .gitignore 不支持行尾注释，说明文字一律单独成行。
+# ============================================================
+
+# ---------- 大体积环境 / 第三方源码（绝对不能上传） ----------
+# Python 3.12 虚拟环境，约 5.5 GB
+env_isaaclab/
+# 第三方仓库 clone（remote = isaac-sim/IsaacLab），约 187 MB
+IsaacLab/
+# PyTorch 等离线安装包，约 2.7 GB
+downloads/
+
+# ---------- 运行期缓存 ----------
+warp_cache/
+warp_tmp/
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# ---------- 编辑器临时文件 ----------
+imgui.ini
+
+# ---------- 训练中间 checkpoint（约 5.7 MB） ----------
+# 想连模型一起分享就注释掉下面两行；建议至少保留
+# logs/**/exported/ 里的 policy.pt / policy.onnx 和验收 json / png。
+ec66_rl_starter/logs/**/model_*.pt
+ec66_rl_starter/logs/**/events.out.tfevents.*
+
+# ---------- 与本任务无关的示例资产（约 15.9 MB） ----------
+assets/newton-assets_anybotics_anymal_c_10d611d6_f8fb7abc/
+
+# ---------- 系统 / 编辑器 ----------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

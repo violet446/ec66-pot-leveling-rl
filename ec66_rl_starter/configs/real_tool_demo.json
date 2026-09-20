@@ -1,0 +1,9 @@
+{
+  "stl_scale_to_m": 0.001,
+  "mount_center_raw_m": [0.137452667, 0.032825022, 0.0],
+  "mount_rpy_rad": [0.6, 0.0, 1.5707963267948966],
+  "patch_size_m": 0.025,
+  "panel_thickness_m": 0.004,
+  "scoop_mass_kg": 1.0,
+  "note": "User authorized provisional mount. Millimeter scale, mount, mass and inertia are assumptions. Robot visual meshes are real; robot collisions remain proxies. Scoop collisions are fitted surface patches, not a single convex hull."
+}

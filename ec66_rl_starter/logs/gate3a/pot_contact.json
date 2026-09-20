@@ -1,0 +1,38 @@
+{
+  "config": {
+    "outer_diameter_m": 2.0,
+    "wall_thickness_m": 0.03,
+    "height_m": 0.6,
+    "bottom_thickness_m": 0.04,
+    "center_xy_m": [
+      1.35,
+      0.122
+    ],
+    "floor_z_m": -0.6,
+    "wall_segments": 64,
+    "scoop_volume_liters": 5.0,
+    "initial_fill_fraction": 0.5,
+    "note": "Only outer diameter is confirmed. All other dimensions, placement and dose are demo assumptions. Material is scooped from inside and returned to the same pot."
+  },
+  "nominal_scene": {
+    "floor_contact": true,
+    "wall_contact": true,
+    "max_robot_pot_force_n": 0.0,
+    "max_hold_error_rad": 0.022156238555908203,
+    "final_probe_positions_m": [
+      [
+        1.290219783782959,
+        0.12200000137090683,
+        -0.5650681257247925
+      ],
+      [
+        1.3964537382125854,
+        0.12200000137090683,
+        -0.5650677680969238
+      ]
+    ],
+    "sim_time_s": 3.000000000000044
+  },
+  "deliberate_intersection_detected": true,
+  "fault_force_n_diagnostic_only": 15991.251953125
+}

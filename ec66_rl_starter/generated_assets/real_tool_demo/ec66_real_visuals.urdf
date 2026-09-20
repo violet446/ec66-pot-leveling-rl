@@ -1,0 +1,1053 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="ec66_simplified">
+  <material name="ec66_white">
+    <color rgba="0.81 0.84 0.85 1" />
+  </material>
+  <material name="ec66_steel">
+    <color rgba="0.45 0.50 0.54 1" />
+  </material>
+  <material name="ec66_dark">
+    <color rgba="0.03 0.04 0.05 1" />
+  </material>
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.00039768 0 0.012605" />
+      <mass value="0.41542" />
+      <inertia ixx="0.00054632" ixy="-4.5067e-9" ixz="5.9528e-7" iyy="0.00053741" iyz="-3.5275e-10" izz="0.0010336" />
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0.048" />
+      <geometry>
+        <cylinder radius="0.075" length="0.096" />
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="C:/newton/assets/ec66/base_link.STL" />
+      </geometry>
+      <material name="ec66_white" />
+    </visual>
+  </link>
+  <link name="link1">
+    <inertial>
+      <origin xyz="0 0.0082614 0.0028405" />
+      <mass value="1.7827" />
+      <inertia ixx="0.0031691" ixy="-1.2175e-7" ixz="2.8351e-8" iyy="0.0029334" iyz="-0.00037927" izz="0.0035086" />
+    </inertial>
+    <collision>
+      <geometry>
+        <sphere radius="0.063" />
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="C:/newton/assets/ec66/link1.STL" />
+      </geometry>
+      <material name="ec66_white" />
+    </visual>
+  </link>
+  <joint name="joint1" type="revolute">
+    <origin xyz="0 0 0.096" />
+    <parent link="base_link" />
+    <child link="link1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-6.2832" upper="6.2832" effort="150" velocity="2.6199" />
+    <dynamics damping="0.1" friction="0.02" />
+  </joint>
+  <link name="link2">
+    <inertial>
+      <origin xyz="0 0.017318 0.17637" />
+      <mass value="4.8843" />
+      <inertia ixx="0.022101" ixy="1.2727e-7" ixz="1.0833e-7" iyy="0.022526" iyz="-0.00021178" izz="0.0066105" />
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0.209" />
+      <geometry>
+        <cylinder radius="0.050" length="0.418" />
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="C:/newton/assets/ec66/link2.STL" />
+      </geometry>
+      <material name="ec66_white" />
+    </visual>
+  </link>
+  <joint name="joint2" type="revolute">
+    <origin xyz="0 0.122 0" rpy="0 1.5708 0" />
+    <parent link="link1" />
+    <child link="link2" />
+    <axis xyz="0 1 0" />
+    <limit lower="-6.2832" upper="6.2832" effort="150" velocity="2.6199" />
+    <dynamics damping="0.1" friction="0.02" />
+  </joint>
+  <link name="link3">
+    <inertial>
+      <origin xyz="0 0.028008 0.20069" />
+      <mass value="2.1495" />
+      <inertia ixx="0.0091566" ixy="-1.4815e-7" ixz="-2.8912e-8" iyy="0.0091573" iyz="7.3471e-5" izz="0.0015747" />
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0.199" />
+      <geometry>
+        <cylinder radius="0.043" length="0.398" />
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="C:/newton/assets/ec66/link3.STL" />
+      </geometry>
+      <material name="ec66_white" />
+    </visual>
+  </link>
+  <joint name="joint3" type="revolute">
+    <origin xyz="0 -0.122 0.418" />
+    <parent link="link2" />
+    <child link="link3" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.7925" upper="2.7925" effort="150" velocity="3.3161" />
+    <dynamics damping="0.08" friction="0.015" />
+  </joint>
+  <link name="link4">
+    <inertial>
+      <origin xyz="0 0.11599 -0.00070291" />
+      <mass value="0.53436" />
+      <inertia ixx="0.00041486" ixy="1.1841e-9" ixz="4.7177e-9" iyy="0.00037669" iyz="-5.8283e-5" izz="0.0004403" />
+    </inertial>
+    <collision>
+      <origin xyz="0 0.061 0" rpy="1.5708 0 0" />
+      <geometry>
+        <cylinder radius="0.038" length="0.122" />
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="C:/newton/assets/ec66/link4.STL" />
+      </geometry>
+      <material name="ec66_white" />
+    </visual>
+  </link>
+  <joint name="joint4" type="revolute">
+    <origin xyz="0 0 0.398" rpy="0 1.5708 0" />
+    <parent link="link3" />
+    <child link="link4" />
+    <axis xyz="0 1 0" />
+    <limit lower="-6.2832" upper="6.2832" effort="28" velocity="4.5379" />
+    <dynamics damping="0.05" friction="0.01" />
+  </joint>
+  <link name="link5">
+    <inertial>
+      <origin xyz="0 0.00070291 0.091994" />
+      <mass value="0.53436" />
+      <inertia ixx="0.00041486" ixy="-4.6787e-9" ixz="1.1523e-9" iyy="0.0004403" iyz="5.8283e-5" izz="0.00037669" />
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0.049" />
+      <geometry>
+        <cylinder radius="0.036" length="0.098" />
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="C:/newton/assets/ec66/link5.STL" />
+      </geometry>
+      <material name="ec66_white" />
+    </visual>
+  </link>
+  <joint name="joint5" type="revolute">
+    <origin xyz="0 0.122 0" />
+    <parent link="link4" />
+    <child link="link5" />
+    <axis xyz="0 0 1" />
+    <limit lower="-6.2832" upper="6.2832" effort="28" velocity="4.5379" />
+    <dynamics damping="0.04" friction="0.008" />
+  </joint>
+  <link name="link6">
+    <inertial>
+      <origin xyz="0 -0.067831 0" />
+      <mass value="0.16488" />
+      <inertia ixx="7.7869e-5" ixy="1.9128e-10" ixz="-3.3406e-10" iyy="0.00011744" iyz="-7.8331e-8" izz="7.757e-5" />
+    </inertial>
+    <collision>
+      <origin xyz="0 -0.0445 0" rpy="1.5708 0 0" />
+      <geometry>
+        <cylinder radius="0.034" length="0.089" />
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="C:/newton/assets/ec66/link6.STL" />
+      </geometry>
+      <material name="ec66_white" />
+    </visual>
+  </link>
+  <joint name="joint6" type="revolute">
+    <origin xyz="0 0 0.098" />
+    <parent link="link5" />
+    <child link="link6" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-6.2832" upper="6.2832" effort="28" velocity="4.5379" />
+    <dynamics damping="0.03" friction="0.006" />
+  </joint>
+  <link name="flange_link">
+    <visual>
+      <origin xyz="0 0 0.005" />
+      <geometry>
+        <cylinder radius="0.038" length="0.010" />
+      </geometry>
+      <material name="ec66_steel" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.005" />
+      <geometry>
+        <cylinder radius="0.038" length="0.010" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="flange_joint" type="fixed">
+    <origin xyz="0 -0.089 -0.00047661" rpy="-1.5708 0 3.1416" />
+    <parent link="link6" />
+    <child link="flange_link" />
+  </joint>
+  <link name="scoop_link">
+    <inertial>
+      <origin xyz="0 0.06 0.32" />
+      <mass value="1.0" />
+      <inertia ixx="0.020" iyy="0.029" izz="0.011" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="-0.137452667 -0.032825022 -0" />
+      <geometry>
+        <mesh filename="C:/newton/assets/铁锹4y向上.STL" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="ec66_steel" />
+    </visual>
+    <collision name="blade_patch_000">
+      <origin xyz="-0.1247074165 0.02742443465 0.2907451886" rpy="-1.898001147 -0 -0.8638580809" />
+      <geometry>
+        <box size="0.04233968797 0.03102829744 0.004637178818" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_001">
+      <origin xyz="-0.1245661678 0.04333649736 0.3157993615" rpy="-1.966838492 -0 -0.9262356941" />
+      <geometry>
+        <box size="0.04576870166 0.03350365556 0.004144240042" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_002">
+      <origin xyz="-0.1245540338 0.06167925636 0.3408603674" rpy="-1.997866061 -0 -0.9304412583" />
+      <geometry>
+        <box size="0.04602662963 0.03456840884 0.00415430213" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_003">
+      <origin xyz="-0.12455742 0.08110045483 0.3658298321" rpy="-1.990488819 -0 -0.9561833392" />
+      <geometry>
+        <box size="0.04768986995 0.03477158094 0.004072998986" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_004">
+      <origin xyz="-0.1246730119 0.1005215633 0.3908318919" rpy="-1.974831381 -0 -0.9978860409" />
+      <geometry>
+        <box size="0.05073052579 0.0350245052 0.004232128234" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_005">
+      <origin xyz="-0.1246303432 0.1196090811 0.4157596984" rpy="-1.95117368 -0 -0.9937787895" />
+      <geometry>
+        <box size="0.05040999046 0.03409593159 0.004092421267" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_006">
+      <origin xyz="-0.1245744668 0.1370905072 0.440717711" rpy="-1.937234382 -0 -0.9641615079" />
+      <geometry>
+        <box size="0.0482366473 0.03315022955 0.004006288135" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_007">
+      <origin xyz="-0.1248983036 0.1538866192 0.4659251481" rpy="-1.951577611 -0 -0.935620331" />
+      <geometry>
+        <box size="0.0463494191 0.03317410611 0.004978653619" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_008">
+      <origin xyz="-0.1250931963 0.1710845039 0.4911507242" rpy="-1.983178191 -0 -0.8967692264" />
+      <geometry>
+        <box size="0.04406080591 0.03358242955 0.005742242025" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_009">
+      <origin xyz="-0.1242954561 0.1887103471 0.5159758779" rpy="-2.05985664 -0 -0.7556137254" />
+      <geometry>
+        <box size="0.0377824672 0.03406680223 0.004154470362" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_010">
+      <origin xyz="-0.09953135959 -0.003169421694 0.265317022" rpy="-1.687449088 -0 -0.5847709229" />
+      <geometry>
+        <box size="0.03298000514 0.02777024182 0.005447657588" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_011">
+      <origin xyz="-0.0993537185 0.00390735727 0.2907929025" rpy="-1.88995452 -0 -0.580386245" />
+      <geometry>
+        <box size="0.03288486682 0.0295692628 0.005054078496" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_012">
+      <origin xyz="-0.09933209945 0.01660282932 0.3160701207" rpy="-2.020573915 -0 -0.6234346008" />
+      <geometry>
+        <box size="0.03387208271 0.03199474587 0.004922751675" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_013">
+      <origin xyz="-0.0995334371 0.03286741984 0.3412815401" rpy="-2.059307729 -0 -0.6689768432" />
+      <geometry>
+        <box size="0.03505611304 0.03321722714 0.00546135731" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_014">
+      <origin xyz="-0.09973703384 0.05012839491 0.3664316777" rpy="-2.065324477 -0 -0.6943855696" />
+      <geometry>
+        <box size="0.03578646147 0.03359484702 0.006032989125" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_015">
+      <origin xyz="-0.09987437204 0.06771849097 0.3915134603" rpy="-2.061762231 -0 -0.7058714814" />
+      <geometry>
+        <box size="0.03613445371 0.03360738264 0.006420068708" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_016">
+      <origin xyz="-0.09980255946 0.08668286966 0.4167517905" rpy="-2.136467087 -0 -0.6938536154" />
+      <geometry>
+        <box size="0.03577062096 0.03566500344 0.006536748729" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_017">
+      <origin xyz="-0.09953425716 0.1074438892 0.4417390628" rpy="-2.169289172 -0 -0.6269976022" />
+      <geometry>
+        <box size="0.0339593079 0.03595179416 0.006173479762" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_018">
+      <origin xyz="-0.09922803981 0.1283432587 0.4666666528" rpy="-2.19402003 -0 -0.538949301" />
+      <geometry>
+        <box size="0.03204200518 0.03587052082 0.0057110807" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_019">
+      <origin xyz="-0.09901943362 0.149185069 0.4916222681" rpy="-2.209609291 -0 -0.4659986452" />
+      <geometry>
+        <box size="0.03078220477 0.03576197707 0.005441635066" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_020">
+      <origin xyz="-0.09887253081 0.1701045718 0.5166269525" rpy="-2.228587104 -0 -0.407464339" />
+      <geometry>
+        <box size="0.02995223072 0.03594050729 0.005322316328" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_021">
+      <origin xyz="-0.07365987712 -0.01463100451 0.2398869071" rpy="-1.518676078 -0 -0.290945978" />
+      <geometry>
+        <box size="0.02870644753 0.02754074502 0.004341657573" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_022">
+      <origin xyz="-0.07379164094 -0.01499104948 0.2652670663" rpy="-1.674452537 -0 -0.2979503196" />
+      <geometry>
+        <box size="0.02876748973 0.0276623568 0.005162162972" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_023">
+      <origin xyz="-0.07379396027 -0.008737798524 0.2908888446" rpy="-1.911520903 -0 -0.3063128682" />
+      <geometry>
+        <box size="0.02884256712 0.02933982197 0.005319713233" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_024">
+      <origin xyz="-0.07368427722 0.003538301695 0.3161868373" rpy="-2.072843725 -0 -0.303571664" />
+      <geometry>
+        <box size="0.02881769187 0.03172567372 0.004932605282" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_025">
+      <origin xyz="-0.07358705342 0.0197346893 0.3413125689" rpy="-2.154726505 -0 -0.2800614428" />
+      <geometry>
+        <box size="0.02861487989 0.03337348643 0.004761661183" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_026">
+      <origin xyz="-0.07352849426 0.03767979469 0.3664285756" rpy="-2.192788008 -0 -0.2487059817" />
+      <geometry>
+        <box size="0.028372987 0.03420545192 0.004903675685" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_027">
+      <origin xyz="-0.0733886653 0.0563653604 0.39140104" rpy="-2.206341374 -0 -0.1856881728" />
+      <geometry>
+        <box size="0.02798100948 0.03438398498 0.004720356234" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_028">
+      <origin xyz="-0.07331508889 0.07620375035 0.4165351043" rpy="-2.267214256 -0 -0.1515104714" />
+      <geometry>
+        <box size="0.02781868451 0.03601872319 0.004786178859" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_029">
+      <origin xyz="-0.0733213306 0.09817658645 0.441469905" rpy="-2.294495528 -0 -0.1711576262" />
+      <geometry>
+        <box size="0.02790778134 0.03693749716 0.004439719289" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_030">
+      <origin xyz="-0.07330204566 0.1204489151 0.4664269177" rpy="-2.287558897 -0 -0.1619469451" />
+      <geometry>
+        <box size="0.02786460194 0.03668471346 0.004344085874" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_031">
+      <origin xyz="-0.0732798807 0.1423617058 0.4914085794" rpy="-2.281372302 -0 -0.148311953" />
+      <geometry>
+        <box size="0.02780524802 0.03645221771 0.004319003997" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_032">
+      <origin xyz="-0.07326650927 0.1641734532 0.516422012" rpy="-2.284671853 -0 -0.1396602959" />
+      <geometry>
+        <box size="0.02777039079 0.03653764317 0.004343560527" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_033">
+      <origin xyz="-0.07318197043 0.18582833 0.5413948621" rpy="-2.2807028 -0 -0.08881485517" />
+      <geometry>
+        <box size="0.02760881871 0.03632047563 0.004280275084" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_034">
+      <origin xyz="-0.04834940467 -0.02027503521 0.239939175" rpy="-1.542629261 -0 -0.1447487106" />
+      <geometry>
+        <box size="0.02779062929 0.02751114446 0.004319442556" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_035">
+      <origin xyz="-0.04832224736 -0.01994757851 0.2652634365" rpy="-1.684793165 -0 -0.1238534817" />
+      <geometry>
+        <box size="0.02771227724 0.0276824329 0.004631847292" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_036">
+      <origin xyz="-0.04824247569 -0.01322273199 0.2908297557" rpy="-1.939894508 -0 -0.09546914857" />
+      <geometry>
+        <box size="0.02762580013 0.02950336747 0.004599857638" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_037">
+      <origin xyz="-0.04818478952 -0.0005935542945 0.3161056099" rpy="-2.100469435 -0 -0.07781017562" />
+      <geometry>
+        <box size="0.02758345885 0.0318913249 0.004376475654" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_038">
+      <origin xyz="-0.04815214257 0.01610299955 0.3412333384" rpy="-2.191174522 -0 -0.06617063563" />
+      <geometry>
+        <box size="0.02756031514 0.03382302732 0.004243066708" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_039">
+      <origin xyz="-0.04815454083 0.03471533731 0.3662720959" rpy="-2.221324597 -0 -0.06977665524" />
+      <geometry>
+        <box size="0.02756708183 0.03458892636 0.004201061783" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_040">
+      <origin xyz="-0.04811459816 0.05426179529 0.3912467966" rpy="-2.237662428 -0 -0.04837796682" />
+      <geometry>
+        <box size="0.02753221229 0.0350134784 0.004031505654" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_041">
+      <origin xyz="-0.0481243575 0.07409371255 0.4163689081" rpy="-2.242090233 -0 -0.05013220851" />
+      <geometry>
+        <box size="0.02753459325 0.03513764161 0.004401636034" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_042">
+      <origin xyz="-0.04817893373 0.09525507819 0.4413619474" rpy="-2.302648187 -0 -0.09308447533" />
+      <geometry>
+        <box size="0.02761957155 0.03703729746 0.00407617067" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_043">
+      <origin xyz="-0.04816339665 0.1176717287 0.4663502409" rpy="-2.297115233 -0 -0.08258981908" />
+      <geometry>
+        <box size="0.02759405713 0.03683872967 0.004066243182" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_044">
+      <origin xyz="-0.04814079867 0.1399012702 0.4913713897" rpy="-2.29203701 -0 -0.06595587758" />
+      <geometry>
+        <box size="0.02755992356 0.03665328627 0.004153731785" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_045">
+      <origin xyz="-0.04811551421 0.1619911567 0.5163859015" rpy="-2.296503308 -0 -0.04964163108" />
+      <geometry>
+        <box size="0.02753391884 0.03678319001 0.004176512597" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_046">
+      <origin xyz="-0.04809631812 0.1842296127 0.5413824401" rpy="-2.300824404 -0 -0.03776190023" />
+      <geometry>
+        <box size="0.02751961862 0.03691675147 0.004145927901" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_047">
+      <origin xyz="-0.01562334408 -0.01567449741 0.2149009934" rpy="-1.559697876 -0 0.9812687362" />
+      <geometry>
+        <box size="0.04946324139 0.02750547923 0.01784187683" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_048">
+      <origin xyz="-0.01704251091 -0.01870167071 0.2393052672" rpy="-1.482486365 -0 0.8696382117" />
+      <geometry>
+        <box size="0.04262884951 0.02775780719 0.01575443071" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_049">
+      <origin xyz="-0.01816158892 -0.02074289574 0.2653043071" rpy="-1.613105491 -0 0.7455746481" />
+      <geometry>
+        <box size="0.03743033606 0.02754561546 0.0143892191" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_050">
+      <origin xyz="-0.01972972201 -0.01437287611 0.2917910656" rpy="-1.872735886 -0 0.6129747731" />
+      <geometry>
+        <box size="0.03362103801 0.02942628881 0.01204593608" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_051">
+      <origin xyz="-0.02141015394 -0.002112821175 0.3172963686" rpy="-2.075489719 -0 0.4023628814" />
+      <geometry>
+        <box size="0.02988681242 0.03207530089 0.00949817158" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_052">
+      <origin xyz="-0.0220978622 0.01488347868 0.3422452255" rpy="-2.175736507 -0 0.2937197018" />
+      <geometry>
+        <box size="0.02873042073 0.03392422105 0.007895813959" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_053">
+      <origin xyz="-0.0228195763 0.03363322786 0.3666228722" rpy="-2.221261532 -0 0.1025961498" />
+      <geometry>
+        <box size="0.02764536958 0.03462342368 0.005359934874" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_054">
+      <origin xyz="-0.02292281982 0.0532480608 0.3915606425" rpy="-2.240210482 -0 0.05843464612" />
+      <geometry>
+        <box size="0.02754701775 0.03509133964 0.005030057705" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_055">
+      <origin xyz="-0.02311443097 0.07274043004 0.4163803668" rpy="-2.21959348 -0 -0.04199886133" />
+      <geometry>
+        <box size="0.02752427152 0.03452369256 0.004569023198" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_056">
+      <origin xyz="-0.02304960118 0.09360142777 0.4414675585" rpy="-2.31315442 -0 -0.007251185752" />
+      <geometry>
+        <box size="0.02750072299 0.03732013629 0.00434171302" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_057">
+      <origin xyz="-0.02303514572 0.116383689 0.4664393366" rpy="-2.307893496 -0 0.001801372989" />
+      <geometry>
+        <box size="0.02750004462 0.03714096944 0.004282838614" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_058">
+      <origin xyz="-0.02304296854 0.1390008018 0.4914258077" rpy="-2.302341753 -0 -0.003127057845" />
+      <geometry>
+        <box size="0.02750013445 0.03695534747 0.004268754751" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_059">
+      <origin xyz="-0.02303628796 0.16142774 0.5163805783" rpy="-2.301903414 -0 0.001113486993" />
+      <geometry>
+        <box size="0.02750001705 0.03694074447 0.004135361195" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_060">
+      <origin xyz="-0.02304210632 0.1838626307 0.5413507998" rpy="-2.303038245 -0 -0.002731517302" />
+      <geometry>
+        <box size="0.02750010259 0.03697845799 0.004041052688" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_061">
+      <origin xyz="0.001326669674 0.01133209668 0.214315007" rpy="-1.408172717 -0 -0.1527702186" />
+      <geometry>
+        <box size="0.02782405823 0.02787634701 0.008461521829" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_062">
+      <origin xyz="0.00110297128 0.005135282831 0.2389370701" rpy="-1.35335145 -0 -0.179517903" />
+      <geometry>
+        <box size="0.0279491459 0.02818476529 0.009854016152" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_063">
+      <origin xyz="0.0007120427674 0.00182456295 0.2654155953" rpy="-1.643561656 -0 -0.2210334139" />
+      <geometry>
+        <box size="0.02818571889 0.02757664338 0.01143297885" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_064">
+      <origin xyz="0.0004295735937 0.005479208982 0.2914982266" rpy="-1.820686355 -0 -0.2641102231" />
+      <geometry>
+        <box size="0.02848781027 0.02844493738 0.01211679965" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_065">
+      <origin xyz="-4.756882715e-05 0.01392093784 0.3178402804" rpy="-1.997683724 -0 -0.3276551214" />
+      <geometry>
+        <box size="0.02904521768 0.0305089043 0.01371985115" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_066">
+      <origin xyz="0.0003622653918 0.0266555315 0.3430703756" rpy="-2.039191568 -0 -0.266763003" />
+      <geometry>
+        <box size="0.02850836202 0.03105310143 0.01360213498" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_067">
+      <origin xyz="0.000484911658 0.04006025511 0.3683058583" rpy="-2.069089988 -0 -0.2455642798" />
+      <geometry>
+        <box size="0.02835050667 0.03153072669 0.01383414454" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_068">
+      <origin xyz="0.001289379572 0.05651564337 0.3927437411" rpy="-2.09254087 -0 -0.1414006946" />
+      <geometry>
+        <box size="0.02777722875 0.03180009221 0.01101034443" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_069">
+      <origin xyz="0.001757692063 0.07297676796 0.4168746049" rpy="-2.059114367 -0 -0.05792908238" />
+      <geometry>
+        <box size="0.02754620656 0.03115100693 0.007991645151" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_070">
+      <origin xyz="0.001911721375 0.09384718547 0.4414735254" rpy="-2.30819573 -0 -0.03099727847" />
+      <geometry>
+        <box size="0.02751321672 0.03715920969 0.004383110286" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_071">
+      <origin xyz="0.001930764066 0.1166168443 0.4664362849" rpy="-2.303556943 -0 -0.01957087192" />
+      <geometry>
+        <box size="0.02750526735 0.03699882295 0.004294312614" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_072">
+      <origin xyz="0.001944237464 0.1391748211 0.4913840528" rpy="-2.301059113 -0 -0.01149021455" />
+      <geometry>
+        <box size="0.02750181544 0.03691387901 0.004149676331" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_073">
+      <origin xyz="0.001944516786 0.1614730959 0.516380343" rpy="-2.298043684 -0 -0.01127127202" />
+      <geometry>
+        <box size="0.02750174691 0.03681459963 0.004152556907" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_074">
+      <origin xyz="0.00195915266 0.1838323646 0.5413314252" rpy="-2.298204631 -0 -0.001902614183" />
+      <geometry>
+        <box size="0.02750004977 0.03681886981 0.004004670841" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_075">
+      <origin xyz="0.0207754423 -0.01586390261 0.2114439277" rpy="-1.14899013 -0 -0.8957553807" />
+      <geometry>
+        <box size="0.04400497903 0.03385538508 0.01737173466" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_076">
+      <origin xyz="0.02306606524 -0.02136180456 0.2395903545" rpy="-1.506724839 -0 -0.6562966081" />
+      <geometry>
+        <box size="0.03471094025 0.02759002831 0.01279589126" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_077">
+      <origin xyz="0.02601762941 -0.02193021551 0.265321593" rpy="-1.657868361 -0 -0.2592318178" />
+      <geometry>
+        <box size="0.02845061536 0.02761191651 0.007396168404" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_078">
+      <origin xyz="0.02623885789 -0.01503882902 0.2913592689" rpy="-1.954754042 -0 -0.2166258437" />
+      <geometry>
+        <box size="0.02815810465 0.02976014697 0.007257312058" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_079">
+      <origin xyz="0.02680313217 -0.001799857739 0.3164147186" rpy="-2.123191799 -0 -0.06927475068" />
+      <geometry>
+        <box size="0.02756611833 0.03232607869 0.005392198665" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_080">
+      <origin xyz="0.02671911254 0.01524943522 0.3416766329" rpy="-2.188169664 -0 -0.1030292973" />
+      <geometry>
+        <box size="0.0276466051 0.03378606248 0.00579252471" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_081">
+      <origin xyz="0.02694642967 0.03371217483 0.3664018233" rpy="-2.218044773 -0 -0.008394690827" />
+      <geometry>
+        <box size="0.027500969 0.03447256748 0.004649545754" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_082">
+      <origin xyz="0.02700446287 0.05297286805 0.3913413205" rpy="-2.230437819 -0 0.02455493758" />
+      <geometry>
+        <box size="0.02750829258 0.03480472976 0.004377437753" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_083">
+      <origin xyz="0.02704435792 0.07256172394 0.4163233366" rpy="-2.23815556 -0 0.04905983955" />
+      <geometry>
+        <box size="0.02753312765 0.03502754575 0.004276318492" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_084">
+      <origin xyz="0.0270251059 0.09365745835 0.4413686641" rpy="-2.311840468 -0 0.04220258123" />
+      <geometry>
+        <box size="0.02752450773 0.03728992886 0.004054948809" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_085">
+      <origin xyz="0.02700649904 0.116457901 0.4663727943" rpy="-2.308234849 -0 0.02945135278" />
+      <geometry>
+        <box size="0.02751193082 0.03715974522 0.00408330243" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_086">
+      <origin xyz="0.02699298981 0.1390071611 0.4913748952" rpy="-2.301340992 -0 0.02019595335" />
+      <geometry>
+        <box size="0.02750560926 0.03692546843 0.004120922717" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_087">
+      <origin xyz="0.02698632261 0.1613907188 0.5163765304" rpy="-2.301374011 -0 0.01583303693" />
+      <geometry>
+        <box size="0.02750344728 0.03692526834 0.004125671966" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_088">
+      <origin xyz="0.02697154555 0.1838670681 0.5413577005" rpy="-2.304863331 -0 0.00634485968" />
+      <geometry>
+        <box size="0.02750055355 0.03703956229 0.004053474132" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_089">
+      <origin xyz="0.05233427089 -0.0196786349 0.2399200081" rpy="-1.533557608 -0 0.174265429" />
+      <geometry>
+        <box size="0.02792291579 0.02751966956 0.004297160791" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_090">
+      <origin xyz="0.05228284442 -0.01966511403 0.2652123441" rpy="-1.663934055 -0 0.1416098036" />
+      <geometry>
+        <box size="0.02777805622 0.02762213654 0.004566385984" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_091">
+      <origin xyz="0.05221598474 -0.0130226073 0.2908335599" rpy="-1.937461633 -0 0.1172836027" />
+      <geometry>
+        <box size="0.02769022747 0.02948440927 0.004650207294" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_092">
+      <origin xyz="0.052175192 -0.0005882779355 0.3162382883" rpy="-2.112763219 -0 0.1038501588" />
+      <geometry>
+        <box size="0.02764896108 0.03214643281 0.004801223234" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_093">
+      <origin xyz="0.05212364303 0.0167300381 0.3412566078" rpy="-2.194180501 -0 0.0926255402" />
+      <geometry>
+        <box size="0.02761839118 0.03392062082 0.004305027793" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_094">
+      <origin xyz="0.05208164087 0.03516397105 0.3662517029" rpy="-2.21647437 -0 0.07207604564" />
+      <geometry>
+        <box size="0.02757158559 0.03446377818 0.004160277403" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_095">
+      <origin xyz="0.05208071488 0.05462902896 0.3912486409" rpy="-2.236125837 -0 0.07467425839" />
+      <geometry>
+        <box size="0.02757685192 0.03499280889 0.004045370686" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_096">
+      <origin xyz="0.05211474841 0.07437016379 0.4163331285" rpy="-2.237057854 -0 0.09020386051" />
+      <geometry>
+        <box size="0.02761226069 0.03503576462 0.004313973308" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_097">
+      <origin xyz="0.05210155365 0.09556642961 0.441344514" rpy="-2.300606774 -0 0.09298763173" />
+      <geometry>
+        <box size="0.02761932198 0.03696910799 0.004033168649" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_098">
+      <origin xyz="0.05209319673 0.117984078 0.466344806" rpy="-2.297959355 -0 0.08691995574" />
+      <geometry>
+        <box size="0.02760421036 0.03687251015 0.0040460327" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_099">
+      <origin xyz="0.05207546756 0.1402263714 0.491334232" rpy="-2.295210016 -0 0.07532794841" />
+      <geometry>
+        <box size="0.02757820651 0.03676700587 0.004026676037" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_100">
+      <origin xyz="0.05205705045 0.1623340564 0.5163532613" rpy="-2.293038345 -0 0.06192351137" />
+      <geometry>
+        <box size="0.02755280904 0.03668153496 0.004094163123" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_101">
+      <origin xyz="0.05203453988 0.1843713376 0.5413855979" rpy="-2.294980492 -0 0.04632369586" />
+      <geometry>
+        <box size="0.02752953232 0.03673096244 0.004182781926" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_102">
+      <origin xyz="0.07763222754 -0.01352369883 0.2398628303" rpy="-1.507928105 -0 0.3126569666" />
+      <geometry>
+        <box size="0.02890113638 0.02756011744 0.004366596911" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_103">
+      <origin xyz="0.07777939238 -0.01386024907 0.2652542431" rpy="-1.671515859 -0 0.3309206465" />
+      <geometry>
+        <box size="0.02907764811 0.02765656433 0.005057081097" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_104">
+      <origin xyz="0.07773476381 -0.00710886068 0.290806517" rpy="-1.912996144 -0 0.3483070231" />
+      <geometry>
+        <box size="0.02925681671 0.0294085278 0.004806988743" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_105">
+      <origin xyz="0.07771856991 0.005186849225 0.3162240215" rpy="-2.080895407 -0 0.3531145923" />
+      <geometry>
+        <box size="0.02930831821 0.03201771033 0.005013772214" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_106">
+      <origin xyz="0.07766955187 0.02158625285 0.3413198031" rpy="-2.134941128 -0 0.3460819336" />
+      <geometry>
+        <box size="0.02923326994 0.03314196249 0.00493667331" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_107">
+      <origin xyz="0.07756423284 0.03888236436 0.3663905278" rpy="-2.174497856 -0 0.3032858476" />
+      <geometry>
+        <box size="0.02881511314 0.03392764581 0.004898867147" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_108">
+      <origin xyz="0.07741552782 0.0576133457 0.3914408387" rpy="-2.20993271 -0 0.2361242713" />
+      <geometry>
+        <box size="0.02828484947 0.03461427198 0.004830956018" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_109">
+      <origin xyz="0.07735069778 0.07706688933 0.4165397084" rpy="-2.228929726 -0 0.1964347129" />
+      <geometry>
+        <box size="0.02803923199 0.03501671361 0.005034678789" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_110">
+      <origin xyz="0.0773176822 0.09843042695 0.4415634888" rpy="-2.291834375 -0 0.2013025517" />
+      <geometry>
+        <box size="0.0280667528 0.03694268891 0.004736662639" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_111">
+      <origin xyz="0.07727195661 0.1207500851 0.4664988069" rpy="-2.289301363 -0 0.1818348115" />
+      <geometry>
+        <box size="0.02796097721 0.03679733052 0.0045538446" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_112">
+      <origin xyz="0.07722891316 0.1428351771 0.4914268892" rpy="-2.28305906 -0 0.1622322465" />
+      <geometry>
+        <box size="0.02786590196 0.03654039624 0.004366592961" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_113">
+      <origin xyz="0.0772053484 0.1646797843 0.5163982685" rpy="-2.283131239 -0 0.1508693833" />
+      <geometry>
+        <box size="0.02781596755 0.03651432439 0.004278649574" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_114">
+      <origin xyz="0.07709427636 0.1859610314 0.5414896763" rpy="-2.269898117 -0 0.07472566592" />
+      <geometry>
+        <box size="0.02757695801 0.03596963506 0.004629699718" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_115">
+      <origin xyz="0.1036724329 -0.0008512457775 0.2653278015" rpy="-1.684631096 -0 0.6392044844" />
+      <geometry>
+        <box size="0.03426489907 0.02777762757 0.00577170876" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_116">
+      <origin xyz="0.1034643274 0.006464481013 0.2908223653" rpy="-1.886968431 -0 0.6405594543" />
+      <geometry>
+        <box size="0.03429947561 0.02970117492 0.005289701871" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_117">
+      <origin xyz="0.1034948818 0.02002527461 0.3161518576" rpy="-2.024551883 -0 0.7062975367" />
+      <geometry>
+        <box size="0.03614758431 0.03266545582 0.005255494355" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_118">
+      <origin xyz="0.1036923655 0.036806732 0.3412780706" rpy="-2.032936598 -0 0.7401465227" />
+      <geometry>
+        <box size="0.03724421256 0.03317267144 0.00573299523" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_119">
+      <origin xyz="0.1038681333 0.0538393724 0.3663756426" rpy="-2.035082128 -0 0.7669217646" />
+      <geometry>
+        <box size="0.03819178518 0.0334972836 0.006144219432" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_120">
+      <origin xyz="0.1039845447 0.07157046789 0.3914508905" rpy="-2.039160523 -0 0.7827615636" />
+      <geometry>
+        <box size="0.03878873753 0.03378365941 0.006428014578" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_121">
+      <origin xyz="0.104173354 0.08958951623 0.4166709838" rpy="-2.055907139 -0 0.7720264824" />
+      <geometry>
+        <box size="0.03838109969 0.03414041575 0.00716689216" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_122">
+      <origin xyz="0.1037838356 0.1095860562 0.4418167699" rpy="-2.14315474 -0 0.7024611324" />
+      <geometry>
+        <box size="0.03602992812 0.03598812595 0.006708699845" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_123">
+      <origin xyz="0.1033180704 0.1303886994 0.4666453379" rpy="-2.173609456 -0 0.6031865299" />
+      <geometry>
+        <box size="0.03339274499 0.03583972153 0.005804049837" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_124">
+      <origin xyz="0.1030778794 0.1511444679 0.4915678492" rpy="-2.191351297 -0 0.5336801125" />
+      <geometry>
+        <box size="0.03194180088 0.03574175596 0.00539255355" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_125">
+      <origin xyz="0.1029557645 0.171843221 0.5165940195" rpy="-2.205568268 -0 0.4770129171" />
+      <geometry>
+        <box size="0.0309555586 0.03572060955 0.005376174947" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_126">
+      <origin xyz="0.1283308693 0.0473712953 0.3159548741" rpy="-2.047574785 -0 0.8337660445" />
+      <geometry>
+        <box size="0.0409170235 0.03468314598 0.004161403024" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_127">
+      <origin xyz="0.1285301116 0.06671273272 0.3409560664" rpy="-2.014950219 -0 0.895466124" />
+      <geometry>
+        <box size="0.04398908548 0.03456059827 0.004449987104" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_128">
+      <origin xyz="0.1284281584 0.08621437992 0.3658500104" rpy="-2.008277264 -0 0.9386057382" />
+      <geometry>
+        <box size="0.04653812226 0.03507160223 0.00401271029" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_129">
+      <origin xyz="0.1285482754 0.1061606387 0.3908522468" rpy="-1.991346892 -0 0.9834782952" />
+      <geometry>
+        <box size="0.04962730185 0.03533930844 0.004174988237" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_130">
+      <origin xyz="0.1285974751 0.1255607857 0.4157763766" rpy="-1.951189234 -0 1.001616325" />
+      <geometry>
+        <box size="0.0510259453 0.03424265509 0.004182102229" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_131">
+      <origin xyz="0.1285387363 0.1429492397 0.4406906377" rpy="-1.921856533 -0 0.9901543036" />
+      <geometry>
+        <box size="0.05013117485 0.03306544292 0.004016578514" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_132">
+      <origin xyz="0.1285066749 0.1595343466 0.4657084826" rpy="-1.931675554 -0 0.9664005169" />
+      <geometry>
+        <box size="0.04839291316 0.03301238008 0.004012963535" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_133">
+      <origin xyz="0.1284465207 0.1761407717 0.4907779539" rpy="-1.962978732 -0 0.9096093139" />
+      <geometry>
+        <box size="0.04478432393 0.03315656599 0.004070861562" />
+      </geometry>
+    </collision>
+    <collision name="blade_patch_134">
+      <origin xyz="0.1282836386 0.1932670247 0.5158584884" rpy="-2.014452133 -0 0.8207432464" />
+      <geometry>
+        <box size="0.0403416514 0.0335236696 0.004" />
+      </geometry>
+    </collision>
+    <collision name="shaft">
+      <origin xyz="0 0 0.1075" />
+      <geometry>
+        <cylinder radius="0.019" length="0.215" />
+      </geometry>
+    </collision>
+    <collision name="mount">
+      <origin xyz="0 0 0.006" />
+      <geometry>
+        <cylinder radius="0.0325" length="0.012" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="scoop_mount" type="fixed">
+    <origin xyz="0 0 0" rpy="0.6 0 1.570796327" />
+    <parent link="flange_link" />
+    <child link="scoop_link" />
+  </joint>
+</robot>

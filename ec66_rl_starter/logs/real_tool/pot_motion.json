@@ -1,0 +1,272 @@
+[
+  {
+    "config": {
+      "outer_diameter_m": 2.0,
+      "wall_thickness_m": 0.03,
+      "height_m": 0.6,
+      "bottom_thickness_m": 0.04,
+      "center_xy_m": [
+        1.35,
+        0.122
+      ],
+      "floor_z_m": -0.6,
+      "wall_segments": 64,
+      "scoop_volume_liters": 2.0,
+      "initial_fill_fraction": 0.5,
+      "note": "Only outer diameter is confirmed. All other dimensions, placement and dose are demo assumptions. Material is scooped from inside and returned to the same pot."
+    },
+    "lateral_offset_m": 0.0,
+    "real_tool": true,
+    "urdf": "C:\\newton\\ec66_rl_starter\\generated_assets\\real_tool_demo\\ec66_real_visuals.urdf",
+    "tcp_link6_m": [
+      -0.15137377381324768,
+      -0.6416088342666626,
+      -0.005806479603052139
+    ],
+    "phases": [
+      {
+        "phase": "approach",
+        "target_m": [
+          1.2000000000000002,
+          0.122,
+          0.3
+        ],
+        "actual_tcp_m": [
+          1.2000621110913037,
+          0.12198682479269864,
+          0.30041567616534476
+        ],
+        "error_m": 0.00042049738190157274
+      },
+      {
+        "phase": "descend",
+        "target_m": [
+          1.2000000000000002,
+          0.122,
+          -0.21999999999999997
+        ],
+        "actual_tcp_m": [
+          1.1997654823664394,
+          0.12200640564949917,
+          -0.22046236255770219
+        ],
+        "error_m": 0.0005184772777676676
+      },
+      {
+        "phase": "lift",
+        "target_m": [
+          1.2000000000000002,
+          0.122,
+          0.3
+        ],
+        "actual_tcp_m": [
+          1.199744648367988,
+          0.12198204652699347,
+          0.30042506996857093
+        ],
+        "error_m": 0.0004961967969920077
+      },
+      {
+        "phase": "retreat",
+        "target_m": [
+          1.0626084090905894,
+          0.1273298438158665,
+          0.03861995123378398
+        ],
+        "actual_tcp_m": [
+          1.0622668762781164,
+          0.12733758648587154,
+          0.0383775683449509
+        ],
+        "error_m": 0.00041887238597639856
+      }
+    ],
+    "max_pot_contact_n": 0.0,
+    "max_joint_speed_rad_s": 0.6765747666358948,
+    "max_orientation_error_rad": 0.028625969320064358,
+    "min_tcp_z_m": -0.22589347006167054,
+    "duration_s": 12.733333333332931,
+    "controller": "scripted URDF IK + smooth joint targets + PD with bounded integral correction; not PPO",
+    "self_collision_checked": false
+  },
+  {
+    "config": {
+      "outer_diameter_m": 2.0,
+      "wall_thickness_m": 0.03,
+      "height_m": 0.6,
+      "bottom_thickness_m": 0.04,
+      "center_xy_m": [
+        1.35,
+        0.122
+      ],
+      "floor_z_m": -0.6,
+      "wall_segments": 64,
+      "scoop_volume_liters": 2.0,
+      "initial_fill_fraction": 0.5,
+      "note": "Only outer diameter is confirmed. All other dimensions, placement and dose are demo assumptions. Material is scooped from inside and returned to the same pot."
+    },
+    "lateral_offset_m": 0.05,
+    "real_tool": true,
+    "urdf": "C:\\newton\\ec66_rl_starter\\generated_assets\\real_tool_demo\\ec66_real_visuals.urdf",
+    "tcp_link6_m": [
+      -0.15137377381324768,
+      -0.6416088342666626,
+      -0.005806479603052139
+    ],
+    "phases": [
+      {
+        "phase": "approach",
+        "target_m": [
+          1.2000000000000002,
+          0.172,
+          0.3
+        ],
+        "actual_tcp_m": [
+          1.2000504568589323,
+          0.17206550391085274,
+          0.30039452611215833
+        ],
+        "error_m": 0.0004030973953340305
+      },
+      {
+        "phase": "descend",
+        "target_m": [
+          1.2000000000000002,
+          0.172,
+          -0.21999999999999997
+        ],
+        "actual_tcp_m": [
+          1.1997630373400172,
+          0.1719882060306726,
+          -0.22047827272078852
+        ],
+        "error_m": 0.0005338868750860725
+      },
+      {
+        "phase": "lift",
+        "target_m": [
+          1.2000000000000002,
+          0.172,
+          0.3
+        ],
+        "actual_tcp_m": [
+          1.1997426822958352,
+          0.17195903918632144,
+          0.3004396575680255
+        ],
+        "error_m": 0.0005110664988590165
+      },
+      {
+        "phase": "retreat",
+        "target_m": [
+          1.0626084090905894,
+          0.1273298438158665,
+          0.03861995123378398
+        ],
+        "actual_tcp_m": [
+          1.0622824029768778,
+          0.12728095616977775,
+          0.03839445445745518
+        ],
+        "error_m": 0.00039939802735130224
+      }
+    ],
+    "max_pot_contact_n": 0.0,
+    "max_joint_speed_rad_s": 0.6760321855545044,
+    "max_orientation_error_rad": 0.02862034748187644,
+    "min_tcp_z_m": -0.2261732038772938,
+    "duration_s": 12.733333333332931,
+    "controller": "scripted URDF IK + smooth joint targets + PD with bounded integral correction; not PPO",
+    "self_collision_checked": false
+  },
+  {
+    "config": {
+      "outer_diameter_m": 2.0,
+      "wall_thickness_m": 0.03,
+      "height_m": 0.6,
+      "bottom_thickness_m": 0.04,
+      "center_xy_m": [
+        1.35,
+        0.122
+      ],
+      "floor_z_m": -0.6,
+      "wall_segments": 64,
+      "scoop_volume_liters": 2.0,
+      "initial_fill_fraction": 0.5,
+      "note": "Only outer diameter is confirmed. All other dimensions, placement and dose are demo assumptions. Material is scooped from inside and returned to the same pot."
+    },
+    "lateral_offset_m": 0.1,
+    "real_tool": true,
+    "urdf": "C:\\newton\\ec66_rl_starter\\generated_assets\\real_tool_demo\\ec66_real_visuals.urdf",
+    "tcp_link6_m": [
+      -0.15137377381324768,
+      -0.6416088342666626,
+      -0.005806479603052139
+    ],
+    "phases": [
+      {
+        "phase": "approach",
+        "target_m": [
+          1.2000000000000002,
+          0.222,
+          0.3
+        ],
+        "actual_tcp_m": [
+          1.2000341787202344,
+          0.22213381449496444,
+          0.3003956037478889
+        ],
+        "error_m": 0.000419018888981358
+      },
+      {
+        "phase": "descend",
+        "target_m": [
+          1.2000000000000002,
+          0.222,
+          -0.21999999999999997
+        ],
+        "actual_tcp_m": [
+          1.1997588488222783,
+          0.22196844755689038,
+          -0.22050503926214945
+        ],
+        "error_m": 0.0005605480385259638
+      },
+      {
+        "phase": "lift",
+        "target_m": [
+          1.2000000000000002,
+          0.222,
+          0.3
+        ],
+        "actual_tcp_m": [
+          1.199737856957059,
+          0.22193758132544622,
+          0.30046571194662824
+        ],
+        "error_m": 0.000538054535458842
+      },
+      {
+        "phase": "retreat",
+        "target_m": [
+          1.0626084090905894,
+          0.1273298438158665,
+          0.03861995123378398
+        ],
+        "actual_tcp_m": [
+          1.062270392730733,
+          0.12723426788837042,
+          0.03840648378632913
+        ],
+        "error_m": 0.00041104521475153455
+      }
+    ],
+    "max_pot_contact_n": 0.0,
+    "max_joint_speed_rad_s": 0.675274670124054,
+    "max_orientation_error_rad": 0.028610565347299503,
+    "min_tcp_z_m": -0.2265584501409512,
+    "duration_s": 12.6999999999996,
+    "controller": "scripted URDF IK + smooth joint targets + PD with bounded integral correction; not PPO",
+    "self_collision_checked": false
+  }
+]

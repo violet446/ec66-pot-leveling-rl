@@ -1,0 +1,28 @@
+# 这是教学用的单一事实来源。训练环境、回放脚本和部署适配器都要读取相同数值。
+task_name: EC66-Reach-v0
+control_dt_s: 0.05
+physics_substeps: 4
+episode_length_steps: 250
+
+observation:
+  joint_count: 6
+  tcp_to_goal_scale_m: 1.0
+  max_joint_speed_rad_s: 2.0
+
+action:
+  kind: joint_position_delta
+  scale_rad: 0.04
+  clip_min: -1.0
+  clip_max: 1.0
+
+goal:
+  success_distance_m: 0.03
+  # Gate 2 必须按 EC66 实际可达工作空间确认后再填写随机采样边界。
+  sampling_bounds_m: TODO_MEASURE_FROM_EC66
+
+reward:
+  progress: 2.0
+  distance: -0.2
+  action_l2: -0.01
+  success: 10.0
+  failure: -5.0
